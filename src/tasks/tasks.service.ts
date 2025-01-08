@@ -29,16 +29,16 @@ export class TasksService {
     return task;
   }
 
-  deleteTask(id: string) {
+  deleteTask(id: string): void {
     this.tasks = this.tasks.filter((task) => task.id !== id);
-    return 'Task deleted';
   }
 
   updateTask(updateTaskDto: UpdateTaskDto): Task {
-    const { id, title, description } = updateTaskDto;
+    const { id, title, description, status } = updateTaskDto;
     const task = this.tasks.find((task) => task.id === id);
     task.title = title;
     task.description = description;
+    task.status = status;
     return task;
   }
 }
